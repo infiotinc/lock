@@ -99,9 +99,9 @@ const Component = ({ i18n, model }) => {
       {ssoNotice}
       {tabs}
       <div>
-        {social}
-        {separator}
         {login}
+        {separator}
+        {social}
       </div>
     </div>
   );

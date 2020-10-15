@@ -28,8 +28,12 @@ export default class LoginPane extends React.Component {
       usernameStyle
     } = this.props;
 
-    const headerText = instructions || null;
-    const header = headerText && <p>{headerText}</p>;
+    const alternativeText = instructions || null;
+    const alternativeElt =
+      alternativeText &&
+      <p className="auth0-lock-alternative-instructions">
+        {alternativeText}
+      </p>;
     const resolver = l.connectionResolver(lock);
 
     // Should never validate format on login because of custom db connection and import mode.
@@ -75,7 +79,6 @@ export default class LoginPane extends React.Component {
 
     return (
       <div>
-        {header}
         {fieldPane}
         <PasswordPane
           i18n={i18n}
@@ -85,6 +88,7 @@ export default class LoginPane extends React.Component {
         />
         {captchaPane}
         {dontRememberPassword}
+        {alternativeElt}
       </div>
     );
   }

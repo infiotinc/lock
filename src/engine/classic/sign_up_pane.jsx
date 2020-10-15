@@ -26,8 +26,12 @@ export default class SignUpPane extends React.Component {
       usernameInputPlaceholder
     } = this.props;
 
-    const headerText = instructions || null;
-    const header = headerText && <p>{headerText}</p>;
+    const alternativeText = instructions || null;
+    const alternativeElt =
+      alternativeText &&
+      <p className="auth0-lock-alternative-instructions">
+        {alternativeText}
+      </p>;
 
     const usernamePane =
       !onlyEmail && databaseConnectionRequiresUsername(model) ? (
@@ -75,7 +79,6 @@ export default class SignUpPane extends React.Component {
 
     return (
       <div>
-        {header}
         <EmailPane
           i18n={i18n}
           lock={model}
@@ -86,6 +89,7 @@ export default class SignUpPane extends React.Component {
         {passwordPane}
         {captchaPane}
         {fields}
+        {alternativeElt}
       </div>
     );
   }
